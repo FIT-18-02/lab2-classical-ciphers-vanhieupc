@@ -15,7 +15,6 @@ bool is_valid_message(const string &text) {
 
 char shift_char(char c, int shift) {
     if (!isalpha(static_cast<unsigned char>(c))) return c;
-
     char base = isupper(static_cast<unsigned char>(c)) ? 'A' : 'a';
     shift %= 26;
     if (shift < 0) shift += 26;
@@ -37,24 +36,19 @@ string caesar_decrypt(const string &ciphertext, int shift) {
 int main() {
     cout << "=== Caesar Cipher Demo ===\n";
     cout << "1. Encrypt\n2. Decrypt\nChoose: ";
-
     int choice;
     cin >> choice;
     cin.ignore();
-
     string message;
     int shift;
-
     cout << "Enter message: ";
     getline(cin, message);
     cout << "Enter key: ";
     cin >> shift;
-
     if (!is_valid_message(message)) {
         cout << "Invalid input. Only letters and spaces are allowed.\n";
         return 0;
     }
-
     if (choice == 1) {
         cout << "Ciphertext: " << caesar_encrypt(message, shift) << "\n";
     } else if (choice == 2) {
@@ -62,6 +56,5 @@ int main() {
     } else {
         cout << "Invalid choice.\n";
     }
-
     return 0;
 }
